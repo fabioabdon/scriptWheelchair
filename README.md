@@ -14,6 +14,6 @@ $ ./inst.ros.Wheelchair.sh
 $ cd scriptWheelchair
 $ ./inst.ros.Wheelchair.sh
 ```
-[ROS Kinetic](https://www.youtube.com/watch?v=LtHeyCBAE-8)
+[ROS Kinetic]()
 
-[Pepper](https://www.youtube.com/watch?v=toLx_NlV4kA)
+[Wheelchair]()
