@@ -16,10 +16,20 @@ Installing Wheelchair packages' 0 0 0
 
 INSTA 0
 sudo apt-get update -y &> /dev/null
+
+INSTA 20
 sudo apt-get upgrade -y &> /dev/null
+
+INSTA 40
+sudo dpkg --configure -a -y &> /dev/null
+
+INSTA 50
+sudo apt-get install ros-kinetic-gmapping
+
+INSTA 70
 sudo apt-get install ros-kinetic-teleop-twist-keyboard -y &> /dev/null
 
-INSTA 8
+INSTA 85
 cd ~/catkin_ws/src/
 git clone https://github.com/ros-perception/slam_gmapping.git
 
@@ -28,15 +38,6 @@ dialog                                         \
    --title 'Wait....'                           \
    --msgbox '\nProceed when the Wheelchair Meshes terminal is finished.'  \
    0 0
-
-#INSTA 98
-sudo apt-get update -y &> /dev/null
-
-#INSTA 99
-sudo apt-get upgrade -y &> /dev/null
-
-#INSTA 100
-sleep 1
 
 dialog                                         \
    --title 'Wait...'                           \
@@ -49,16 +50,20 @@ echo $1 | dialog --gauge 'Wait... \n
 Downloading Wheelchair files' 0 0 0
 }
 
-DOWN 0 
+DOWN 0
+sudo apt-get update -y &> /dev/null
+
+DOWN 35
+sudo apt-get upgrade -y &> /dev/null
+
+DOWN 60 
 cd ~/catkin_ws/src/
 
-
-DOWN 3
+DOWN 70
 git clone https://github.com/fabioabdon/nuric_wheelchair_model_02.git
 
 DOWN 81
-cd
-cd
+cd ~/catkin_ws
 catkin_make &> /dev/null
 
 #DOWN 100

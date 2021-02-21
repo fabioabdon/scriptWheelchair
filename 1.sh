@@ -14,49 +14,48 @@ Installing ROS Kinetic' 0 0 0
 }
 
 GAUGE 0
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' &> /dev/null
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'  &> /dev/null
 
 GAUGE 2
-sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 &> /dev/null
+ssudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116  &> /dev/null
 
 GAUGE 4
 sudo apt-get update -y &> /dev/null
 
 GAUGE 9
-sudo apt-get install ros-kinetic-desktop-full -y &> /dev/null
+sudo apt-get install ros-kinetic-desktop-full  -y &> /dev/null
 
-GAUGE 70
-sudo apt-get install ros-kinetic-desktop-full -y &> /dev/null
+GAUGE 30
+sudo rosdep init
 
-GAUGE 71
-echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+GAUGE 31
+rosdep update
 
-GAUGE 72
-source ~/.bashrc
+GAUGE 32
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc 
 
-GAUGE 73
-echo "export ROS_MASTER_URI=http://localhost:11311" >> ~/.bashrc
+GAUGE 33
+source ~/.bashrc 
 
-GAUGE 74
-source ~/.bashrc
+GAUGE 34
+sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential -y &> /dev/null
 
-GAUGE 75
-echo "export ROS_HOSTNAME=localhost" >> ~/.bashrc
-
-GAUGE 76
-source ~/.bashrc
-
-GAUGE 77
-sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential -y &> /dev/null
+GAUGE 55
+mkdir -p ~/catkin_ws/src
 
 GAUGE 90
-sudo apt install python-rosdep -y &> /dev/null
+cd catkin_ws
 
-GAUGE 92
-sudo rosdep init &> /dev/null
+GAUGE 94
+catkin_make
 
 GAUGE 96
-rosdep update &> /dev/null
+echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
+source ~/.bashrc
+
+
+
 
 GAUGE 99
 sleep 1
